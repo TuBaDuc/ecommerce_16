@@ -1,0 +1,18 @@
+<footer class="footer">
+  <small>
+    <%= raw t :project_name%>
+    <a href="http://training.framgia.vn/">
+      <%= t :project_name_link_text%>
+    </a>
+    <%= t :author%>
+    <a href="http://www.facebook.com/">
+      <%= t :author_link_text%>
+    </a>
+  </small>
+  <nav>
+    <ul>
+      <li><%= link_to t(:about), about_path %></li>
+      <li><%= link_to t(:contact), contact_path %></li>
+    </ul>
+  </nav>
+</footer>
