@@ -1,0 +1,16 @@
+<% provide :title, t("help_title") %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield :title %> | <%= t :system_name %></title>
+  </head>
+  <body>
+    <h1><%= t :help_title %></h1>
+    <p>
+      <%= raw t :help_intro %>
+      <a href="http://framgia.com/jp/company/index">
+      <%= t :help_intro_link_text %>
+      </a>
+    </p>
+  </body>
+</html>
