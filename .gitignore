@@ -36,6 +36,7 @@ bower.json
 # Ignore database configure file
 config/database.yml
 test/
+.idea/
 public/uploads/
 config/settings.local.yml
 config/settings/*.local.yml
