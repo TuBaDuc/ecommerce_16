@@ -1,0 +1,9 @@
+user:
+  photo_format: "image/jpeg,image/gif,image/png"
+  name_max_length: 100
+  email_max_length: 255
+  address_max_length: 255
+  phone_max_length: 16
+  password_min_length: 6
+  password_max_length: 128
+  photo_max_size: 2097152
