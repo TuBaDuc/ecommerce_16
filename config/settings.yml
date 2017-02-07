@@ -7,3 +7,4 @@ user:
   password_min_length: 6
   password_max_length: 128
   photo_max_size: 2097152
+  photo_size_large: 250

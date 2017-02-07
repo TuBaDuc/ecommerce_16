@@ -42,6 +42,7 @@ en:
     login: "Log in"
     logout: "Log out"
     edit_profile: "Edit profile"
+    profile: "Profile"
   #footer
   about: "About"
   contact: "Contact"
@@ -52,3 +53,12 @@ en:
   #home
   intro: "This is the home page for the"
   intro_link_text: "Framgia Ecommerce System"
+  #users
+  users:
+    show:
+      header: "Profile"
+      edit_profile: "Edit profile"
+      name: "Name"
+      email: "E-mail"
+      phone_number: "Phone number"
+      address: "Address"
