@@ -18,28 +18,29 @@
     <div><%= t ".msg_email", resource_email:resource.unconfirmed_email %></div>
   <% end %>
 
-  <div class="field form-group">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-      <em>
-        <%= t ".msg_characters_minimum", number: @minimum_password_length %>
-      </em>
-    <% end %>
-    <i><%=  t ".tool_tip_password" %></i>
-    <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
+  <% unless resource.provider.present? %>
+    <div class="field form-group">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+        <em>
+          <%= t ".msg_characters_minimum", number: @minimum_password_length %>
+        </em>
+      <% end %>
+      <i><%=  t ".tool_tip_password" %></i>
+      <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
+    </div>
 
-  </div>
+    <div class="field form-group">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
+    </div>
 
-  <div class="field form-group">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
-  </div>
-
-  <div class="field form-group">
-    <%= f.label :current_password %>
-    <i><%= t ".tool_tip_current_password" %></i>
-    <%= f.password_field :current_password, class: "form-control", autocomplete: "off" %>
-  </div>
+    <div class="field form-group">
+      <%= f.label :current_password %>
+        <i><%= t ".tool_tip_current_password" %></i>
+      <%= f.password_field :current_password, class: "form-control", autocomplete: "off" %>
+    </div>
+  <% end %>
 
   <div class="field form-group">
     <%= f.label :address %>

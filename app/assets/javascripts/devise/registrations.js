@@ -7,6 +7,4 @@ $(document).on('turbolinks:load', function () {
     $(this).closest('span.input-group-btn').parent().find('.form-control').
       html($(this).val().split(/[\\\\|/]/).pop());
   });
-
-  $('#photo_name').html($(image_field).val().split(/[\\\\|/]/).pop());
 });
