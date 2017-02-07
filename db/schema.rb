@@ -10,10 +10,88 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170207062222) do
+ActiveRecord::Schema.define(version: 20170207171713) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "level"
+    t.string   "parent_path"
+    t.boolean  "is_leaf"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "content"
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_comments_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_likes_on_product_id", using: :btree
+    t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
+  end
+
+  create_table "order_details", force: :cascade do |t|
+    t.integer  "quantity"
+    t.float    "price"
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_details_on_order_id", using: :btree
+    t.index ["product_id"], name: "index_order_details_on_product_id", using: :btree
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "code"
+    t.integer  "status"
+    t.float    "total_bill"
+    t.string   "ship_address"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "code"
+    t.string   "name"
+    t.string   "photo"
+    t.string   "desciption"
+    t.float    "price"
+    t.integer  "in_stock"
+    t.float    "avg_rating"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_products_on_category_id", using: :btree
+  end
+
+  create_table "suggests", force: :cascade do |t|
+    t.string   "title"
+    t.string   "content"
+    t.string   "status"
+    t.string   "integer"
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_suggests_on_category_id", using: :btree
+    t.index ["user_id"], name: "index_suggests_on_user_id", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -35,8 +113,19 @@ ActiveRecord::Schema.define(version: 20170207062222) do
     t.integer  "role",                   default: 0
     t.string   "provider"
     t.string   "uid"
+
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "comments", "products"
+  add_foreign_key "comments", "users"
+  add_foreign_key "likes", "products"
+  add_foreign_key "likes", "users"
+  add_foreign_key "order_details", "orders"
+  add_foreign_key "order_details", "products"
+  add_foreign_key "orders", "users"
+  add_foreign_key "products", "categories"
+  add_foreign_key "suggests", "categories"
+  add_foreign_key "suggests", "users"
 end
