@@ -36,3 +36,18 @@ Category.where(depth: 1).find_each do |cat|
       description: Faker::Lorem.sentence, parent_id: cat.id
   end
 end
+
+25.times do |p|
+  product_name = Faker::Cat.name + p.to_s
+  description = Faker::Lorem.sentence
+  price = rand(10000..2000000)
+  in_stock = rand(0..20)
+  category_id = rand(Category.first.id..Category.last.id)
+  rating = rand(0..5)
+  Product.create! name: product_name,
+    description: description,
+    price: price,
+    in_stock: in_stock,
+    category_id: category_id,
+    avg_rating: rating
+end

@@ -118,4 +118,21 @@ en:
         msg_delete_notice_product: "The category has some products!"
         msg_delete_success: "Delete the category is successful."
         msg_delete_fail: "Delete the category is failed!"
-
+    products:
+      index:
+        title: "Products Management"
+        name_search: "Name"
+        add_new_product: "Add new product"
+        number: "Number"
+        product_code: "Product code"
+        name: "Name"
+        category_name: "Category name"
+        price: "Price (VND)"
+        in_stock: "In stock"
+        created_at: "Create at"
+        option: "Option"
+      product:
+        out_of_stock: "Out of stock"
+        edit: "Edit"
+        delete: "Delete"
+        confirm_delete: "Are you sure?"

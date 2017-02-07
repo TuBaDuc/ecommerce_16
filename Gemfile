@@ -51,6 +51,7 @@ gem "kaminari"
 gem "ransack"
 gem "faker"
 gem "awesome_nested_set"
+gem "friendly_id"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console

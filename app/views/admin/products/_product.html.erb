@@ -1,0 +1,48 @@
+<tr>
+  <td class="text-left">
+    <%= set_index_number product_counter, @products.current_page,
+      params[:limit].to_i %>
+  </td>
+  <td class="text-left">
+    <%= product.code %>
+  </td>
+  <td class="text-left">
+    <%= product.name %>
+  </td>
+  <% if product.category.depth == 0 %>
+    <td class="text-left">
+      <%= product.category.name %>
+    </td>
+  <% else %>
+    <td class="text-left">
+      <%= "-" * product.category.depth %><%= product.category.name %>
+    </td>
+  <% end %>
+  <td class="text-left">
+    <%= product.price %>
+  </td>
+  <% if product.in_stock > 0 %>
+    <td class="text-left text-primary">
+      <%= product.in_stock %>
+    </td>
+  <% else %>
+    <td class="text-left text-danger">
+      <%= t(".out_of_stock") %>
+    </td>
+  <% end %>
+  <td class="text-left"><%= l product.created_at, format: :date_format %></td>
+  <td class="text-left">
+    <%= link_to edit_admin_product_path(product),
+      class: "btn btn-info btn-xs", remote: true,
+      id: product.id do %>
+      <span class="glyphicon glyphicon-edit"></span>
+      <%= t ".edit" %>
+    <% end %>
+    <%= link_to admin_product_path(product.id), method: :delete,
+      class: "btn btn-danger btn-xs", id: product.id,
+      data: {confirm: t(".confirm_delete")}, remote: true do %>
+      <span class="glyphicon glyphicon-trash"></span>
+      <%= t ".delete" %>
+    <% end %>
+  </td>
+</tr>
