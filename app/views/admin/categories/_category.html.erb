@@ -1,0 +1,33 @@
+<tr>
+  <td class="text-left">
+    <% if category.root? %>
+      <%= set_index_number category_counter, @categories.current_page,
+        params[:limit].to_i %>
+    <% end %>
+  </td>
+  <td class="text-left">
+    <% if category.child? %>
+      <%= raw "|" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"*category.depth + "|--" %>
+    <% end %>
+    <%= category.name %>
+  </td>
+  <td class="text-left"><%= category.description %></td>
+  <td class="text-left"><%= category.products_size %></td>
+  <td class="text-left"><%= l category.created_at, format: :date_format %></td>
+  <td class="text-left">
+    <%= link_to edit_admin_category_path(category),
+      class: "btn btn-info btn-xs", remote: true,
+      id: category.id do %>
+      <span class="glyphicon glyphicon-edit"></span>
+      <%= t ".edit" %>
+    <% end %>
+    <% if category.leaf? %>
+      <%= link_to admin_category_path(category.id), method: :delete,
+        class: "btn btn-danger btn-xs", id: category.id,
+        data: {confirm: t(".confirm_delete")}, remote: true do %>
+        <span class="glyphicon glyphicon-trash"></span>
+        <%= t ".delete" %>
+      <% end %>
+    <% end %>
+  </td>
+</tr>

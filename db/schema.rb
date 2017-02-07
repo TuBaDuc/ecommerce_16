@@ -18,11 +18,16 @@ ActiveRecord::Schema.define(version: 20170207171713) do
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.integer  "level"
-    t.string   "parent_path"
-    t.boolean  "is_leaf"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "parent_id"
+    t.integer  "lft",                        null: false
+    t.integer  "rgt",                        null: false
+    t.integer  "depth",          default: 0, null: false
+    t.integer  "children_count", default: 0, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["lft"], name: "index_categories_on_lft", using: :btree
+    t.index ["parent_id"], name: "index_categories_on_parent_id", using: :btree
+    t.index ["rgt"], name: "index_categories_on_rgt", using: :btree
   end
 
   create_table "comments", force: :cascade do |t|
@@ -113,7 +118,6 @@ ActiveRecord::Schema.define(version: 20170207171713) do
     t.integer  "role",                   default: 0
     t.string   "provider"
     t.string   "uid"
-
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
