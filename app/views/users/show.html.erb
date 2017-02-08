@@ -1,0 +1,35 @@
+<% provide :title, t(".title", name: @user.name) %>
+
+<div class="container-fluid user-profile">
+  <div class="row">
+    <div class="col-md-offset-1 col-md-3">
+      <div class="user_photo">
+        <%= image_tag @user.photo.url, size: Settings.user.photo_size_large  %>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <table class="table">
+        <tr>
+          <th><%= t ".name" %></th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th><%= t ".email" %></th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th><%= t ".phone_number" %></th>
+          <td><%= @user.phone %></td>
+        </tr>
+        <tr>
+          <th><%= t ".address" %></th>
+          <td><%= @user.address %></td>
+        </tr>
+      </table>
+      <% if can? :edit, @user %>
+        <%= link_to t(".edit_profile"), edit_user_registration_path,
+          class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

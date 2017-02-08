@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   include ActionView::Helpers::NumberHelper
+  before_save :set_role
 
   mount_uploader :photo, PhotoUploader
   validate :photo_size
@@ -23,10 +24,16 @@ class User < ApplicationRecord
   validates :address, presence: true,
     length: {maximum: Settings.user.address_max_length}
 
+  enum role: [:user, :admin]
+
   private
   def photo_size
     return true unless photo.size > Settings.user.photo_max_size
     errors.add :photo, I18n.t("devise.registrations.new.photo_max_size_error",
       max_size: number_to_human_size(Settings.user.photo_max_size))
+  end
+
+  def set_role
+    self.role ||= :user
   end
 end
