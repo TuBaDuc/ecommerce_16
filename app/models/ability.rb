@@ -13,6 +13,7 @@ class Ability
       end
     else
       can :read, User
+      can :create, User
     end
   end
 end
