@@ -2,10 +2,12 @@ class Product < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
+  mount_uploader :photo, PhotoUploader
+
   belongs_to :category
-  has_many :order_details
-  has_many :likes
-  has_many :comments
+  has_many :order_details, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true, length: {maximum: 100}
   validates :code, presence: true, uniqueness: true
@@ -21,11 +23,10 @@ class Product < ApplicationRecord
     name_changed? || super
   end
 
-  private
   def create_code
-    category_code = "#{self.category.name.first(3).upcase}.#{self.category.id}"
+    prefix_code = Settings.admin.product.prefix_code
     last_record = Product.last
     self[:code] =
-      last_record.nil? ? "#{category_code}.1" : "#{category_code}.#{last_record.id + 1}"
+      last_record.nil? ? "#{prefix_code}.1" : "#{prefix_code}.#{last_record.id + 1}"
   end
 end

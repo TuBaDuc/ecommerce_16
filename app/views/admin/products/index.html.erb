@@ -30,8 +30,14 @@
       </div>
     <% end %>
   </div>
+  <%= search_form_for @search, url: admin_products_path, class: "col-md-2 navbar-form" do |f| %>
+    <%= select_tag :category_id, options_for_select(
+      nested_set_options(Category, @category) {|cat| "#{'-' * cat.level} #{cat.name}"},
+      params[:category_id]), {include_blank: t(".all_category"), class: "select form-control", id: "parent_category_search"} %>
+    <%= f.submit "", class: "invisible" %>
+  <% end %>
   <div class="col-md-2 navbar-form">
-      <%= link_to new_admin_product_path, remote: true,
+      <%= link_to new_admin_product_path(category_id: params[:category_id]), remote: true,
         class: "btn btn-success" do %>
         <span class="glyphicon glyphicon-plus-sign"></span>
         <%= t ".add_new_product" %>
