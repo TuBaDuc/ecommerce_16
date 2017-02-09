@@ -23,6 +23,7 @@ en:
   project_title: "Ecommerce16"
   system_name: "Framgia Ecommerce Application"
   greeting: "Welcome to"
+  content_not_found_mess: "Content is not found"
   #help
   help_title: "Help"
   help_intro: "Get help on the ecommerce website at the"
@@ -62,3 +63,24 @@ en:
       email: "E-mail"
       phone_number: "Phone number"
       address: "Address"
+  time:
+    formats:
+      date_format: "%d - %m - %Y"
+  admin:
+    users:
+      index:
+        title: "User Management"
+        name_or_email: "Name or e-mail"
+        number: "Number"
+        name: "Name"
+        email: "E-mail"
+        sign_in_count: "Sign-in count"
+        created_at: "Created at"
+      destroy:
+        msg_detroy_success: "Delete user successful."
+        msg_detroy_fail: "Delete user fail!"
+      can_delete:
+        msg_cant_detroy: "Delete user has some orders not delivery!"
+      user:
+        confirm_delete: "Are you sure?"
+        delete: "Delete"

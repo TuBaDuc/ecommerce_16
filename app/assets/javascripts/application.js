@@ -15,3 +15,11 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).on('turbolinks:load', function() {
+  $(function(){
+    $('#items-limit').on('change', function() {
+      $(this).closest('form').trigger('submit');
+    });
+  });
+});

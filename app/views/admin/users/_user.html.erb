@@ -1,0 +1,19 @@
+<tr>
+  <td class="text-left">
+  <%= set_index_number user_counter, @users.current_page, params[:limit].to_i %>
+  </td>
+  <td class="text-left"><%= user.name %></td>
+  <td class="text-left"><%= user.email %></td>
+  <td class="text-left"><%= user.sign_in_count %></td>
+  <td class="text-left"><%= l user.created_at, format: :date_format %></td>
+  <td class="text-center">
+    <% unless current_user == user %>
+      <%= link_to admin_user_path(user.id), method: :delete,
+        class: "btn btn-danger btn-xs",
+        id: user.id, data: {confirm: t(".confirm_delete")}, remote: true do %>
+        <span class="glyphicon glyphicon-trash"></span>
+        <%= t :delete %>
+      <% end %>
+    <% end %>
+  </td>
+</tr>

@@ -1,5 +1,10 @@
 class User < ApplicationRecord
   include ActionView::Helpers::NumberHelper
+  has_many :comments, dependent: :destroy
+  has_many :orders, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :suggests, dependent: :destroy
+
   before_save :set_role
 
   mount_uploader :photo, PhotoUploader
@@ -25,6 +30,9 @@ class User < ApplicationRecord
     length: {maximum: Settings.user.address_max_length}
 
   enum role: [:user, :admin]
+
+  scope :order_by_name, ->{order name: :asc}
+  scope :order_by_name_desc, ->{order name: :desc}
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
