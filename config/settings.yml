@@ -14,3 +14,5 @@ admin:
       level1: 5
       level2: 20
       level3: 50
+  product:
+    prefix_code: "PRD"

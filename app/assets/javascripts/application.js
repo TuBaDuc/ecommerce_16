@@ -18,7 +18,7 @@
 
 $(document).on('turbolinks:load', function() {
   $(function(){
-    $('#items-limit').on('change', function() {
+    $('#items-limit, #parent_category_search').on('change', function() {
       $(this).closest('form').trigger('submit');
     });
   });

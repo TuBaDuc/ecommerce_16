@@ -94,12 +94,13 @@ en:
         created_at: "Created at"
         option: "Option"
         add_new_category: "Add new category"
+        view_all_products: "All products"
       category:
         confirm_delete: "Are you sure?"
         edit: "Edit"
         delete: "Delete"
       form_category:
-        category: "Category"
+        parent_category: "Parent Category"
         name: "Name"
         required: "Required"
         description: "Description"
@@ -131,8 +132,34 @@ en:
         in_stock: "In stock"
         created_at: "Create at"
         option: "Option"
+        all_category: "All Categories"
       product:
         out_of_stock: "Out of stock"
         edit: "Edit"
         delete: "Delete"
         confirm_delete: "Are you sure?"
+      product_form:
+        category: "Category"
+        photo: "Photo"
+        name: "Name"
+        code: "Code"
+        description: description
+        required: "Required"
+        price: "Price (VND)"
+        in_stock: "In stock"
+        add: "Add"
+        update: "Update"
+        choose_photo: "Choose photo"
+        choose_new_photo: "Choose new photo"
+        title_add: "Add new product"
+        title_edit: "Edit product"
+      destroy:
+        msg_destroy_success: "Delete the product is successful."
+        msg_destroy_fail: "Delete the product is failed!"
+        msg_has_been_ordered: "The product has been ordered! Can't delete it."
+      create:
+        msg_create_success: "Create the product is successful."
+        msg_create_fail: "Create the product is failed!"
+      update:
+        msg_update_success: "Update the product is successful."
+        msg_update_fail: "Update the product is failed."

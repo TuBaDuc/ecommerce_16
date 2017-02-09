@@ -38,7 +38,7 @@
       <span class="glyphicon glyphicon-edit"></span>
       <%= t ".edit" %>
     <% end %>
-    <%= link_to admin_product_path(product.id), method: :delete,
+    <%= link_to admin_product_path(product), method: :delete,
       class: "btn btn-danger btn-xs", id: product.id,
       data: {confirm: t(".confirm_delete")}, remote: true do %>
       <span class="glyphicon glyphicon-trash"></span>

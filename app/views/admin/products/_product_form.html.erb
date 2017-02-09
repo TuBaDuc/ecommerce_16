@@ -1,0 +1,89 @@
+<div id="product-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">
+        <% if @product.new_record? %>
+          <%= t ".title_add" %>
+        <% else %>
+          <%= t ".title_edit" %>
+        <% end %>
+      </h4>
+    </div>
+      <%= form_for [:admin, @product], remote: true do |f| %>
+        <div class="modal-body">
+          <div>
+            <%= f.label :category, t(".category") %>
+            <% if @product.new_record? %>
+              <%= f.select :category_id,
+                nested_set_options(Category, @category) {|cat| "#{'-' * cat.level} #{cat.name}"},
+                {selected: params[:category_id]}, {class: "select form-control", id: "parent_category"} %>
+            <% else %>
+              <%= f.select :category_id,
+                nested_set_options(Category, @category) {|cat| "#{'-' * cat.level} #{cat.name}"},
+                {}, {class: "select form-control", id: "parent_category"} %>
+            <% end %>
+          </div>
+          <div>
+            <label><%= t ".code" %> <span class="text-danger">*</span></label>
+            <% if @product.new_record? %>
+              <%= f.text_field :code, class: "form-control",
+                value: @product.create_code,
+                placeholder: t(".required") %>
+            <% else %>
+              <%= f.text_field :code, class: "form-control",
+                placeholder: t(".required") %>
+            <% end %>
+          </div>
+          <div>
+            <label><%= t ".name" %> <span class="text-danger">*</span></label>
+            <%= f.text_field :name, class: "form-control",
+              placeholder: t(".required") %>
+          </div>
+          <div>
+            <%= f.label :price, t(".price") %>
+            <%= f.number_field :price, min: 0, step: 1, class: "form-control" %>
+          </div>
+          <div>
+            <%= f.label :in_stock, t(".in_stock") %>
+            <%= f.number_field :in_stock, min: 0, class: "form-control" %>
+          </div>
+          <div>
+            <%= f.label :description, t(".description") %>
+            <%= f.text_area :description, class: "form-control" %>
+          </div>
+          <div class="field form-group">
+            <%= f.label :photo, t(".photo") %>
+            <div class="input-group">
+              <span class="input-group-btn">
+                <span class="btn btn-small btn-primary btn-inverse" id="choose_photo"
+                  onclick="$('#image_field').click()">
+                  <% if @product.new_record? %>
+                    <%= t ".choose_photo" %>
+                  <% else %>
+                    <%= t ".choose_new_photo" %>
+                  <% end %>
+                </span>
+                <%= f.file_field :photo, class: "invisible", id: "image_field",
+                  accept: Settings.user.photo_format, multipart: true,
+                  onchange: "$('#photo_name').html($(this).val().split(/[\\\\|/]/).pop());" %>
+              </span>
+              <span class="form-control" id="photo_name"></span>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-default" data-dismiss="modal">
+            <%= t ".cancel" %>
+          </button>
+          <% if @product.new_record? %>
+            <%= f.submit t(".add"), class: "btn btn-primary" %>
+          <% else %>
+            <%= f.submit t(".update"), class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
