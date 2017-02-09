@@ -3,16 +3,15 @@ class Ability
 
   def initialize user
     user ||= User.new
-    case user.role
-    when :admin
+    if user.admin?
       can :manage, :all
-    when :user
-      can :read, User
+    elsif user.user?
+      can :read, [User, Category]
       can :edit, User do |check_user|
         check_user == user
       end
     else
-      can :read, User
+      can :read, [User, Category]
       can :create, User
     end
   end
