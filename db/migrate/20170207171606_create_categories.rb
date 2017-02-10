@@ -3,9 +3,12 @@ class CreateCategories < ActiveRecord::Migration[5.0]
     create_table :categories do |t|
       t.string :name
       t.string :description
-      t.integer :level
-      t.string :parent_path
-      t.boolean :is_leaf
+      t.integer :parent_id, :null => true, :index => true
+      t.integer :lft, :null => false, :index => true
+      t.integer :rgt, :null => false, :index => true
+      t.integer :depth, :null => false, :default => 0
+      t.integer :depth, :null => false, :default => 0
+      t.integer :children_count, :null => false, :default => 0
 
       t.timestamps
     end

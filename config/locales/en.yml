@@ -79,8 +79,23 @@ en:
       destroy:
         msg_detroy_success: "Delete user successful."
         msg_detroy_fail: "Delete user fail!"
-      can_delete:
         msg_cant_detroy: "Delete user has some orders not delivery!"
       user:
         confirm_delete: "Are you sure?"
         delete: "Delete"
+    categories:
+      index:
+        title: "Categories Management"
+        name_search: "Name"
+        number: "Number"
+        name: "Name"
+        description: "Description"
+        total_products: "Total products"
+        created_at: "Created at"
+        option: "Option"
+        add_new_category: "Add new category"
+      category:
+        confirm_delete: "Are you sure?"
+        edit: "Edit"
+        delete: "Delete"
+

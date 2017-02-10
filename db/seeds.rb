@@ -15,3 +15,24 @@ User.create!(name:  "Duc Admin",
                phone: "0909897061",
                address: "A1606, Tan Huong, Tan Phu, HCM")
 end
+
+
+3.times do |n|
+  Category.create name: Faker::Pokemon.name,
+    description: Faker::Lorem.sentence, parent_id: nil
+end
+
+Category.roots.each do |cat|
+  2.times do |n|
+    Category.create name: Faker::Pokemon.name,
+      description: Faker::Lorem.sentence, parent_id: cat.id
+  end
+end
+
+Category.where(depth: 1).find_each do |cat|
+  cats = rand(1..2)
+  cats.times do |n|
+    Category.create name: Faker::Pokemon.name,
+      description: Faker::Lorem.sentence, parent_id: cat.id
+  end
+end
