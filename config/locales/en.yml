@@ -98,4 +98,24 @@ en:
         confirm_delete: "Are you sure?"
         edit: "Edit"
         delete: "Delete"
+      form_category:
+        category: "Category"
+        name: "Name"
+        required: "Required"
+        description: "Description"
+        cancel: "Cancel"
+        add: "Add"
+        none: "None"
+        update: "Update"
+      create:
+        msg_create_success: "Create new category is successful."
+        msg_create_fail: "Create new category is failed!"
+      update:
+        msg_update_success: "Update the category is successful."
+        msg_update_fail: "Update the category is failed!"
+      destroy:
+        msg_delete_notice_leaf: "The category is not empty."
+        msg_delete_notice_product: "The category has some products!"
+        msg_delete_success: "Delete the category is successful."
+        msg_delete_fail: "Delete the category is failed!"
 
