@@ -49,5 +49,30 @@ end
     price: price,
     in_stock: in_stock,
     category_id: category_id,
-    avg_rating: rating
+    avg_rating: rating,
+    code: "PRO."+Faker::Code.ean
+end
+
+User.all.order("RANDOM()").limit(25).find_each do |user|
+  orders = rand(1..6)
+  address = Faker::Address.street_address + ", " +
+        Faker::Address.city + ", " +
+        Faker::Address.country
+  orders.times do |n|
+    o_status = rand(0..3)
+    o_bill = rand(1..15)*105000
+    order = Order.create! code: "ORD"+Faker::Code.ean,
+    status: o_status,
+    total_bill: o_bill,
+    ship_address: address,
+    contact_phone: user.phone,
+    user_id: user.id
+    prod_num = rand(1..3)
+    prod_num.times do |p|
+      order.order_details.create! order_id: order.id,
+      quantity: rand(1..3),
+      price: (order.total_bill/prod_num).to_i,
+      product_id: Product.offset(rand(Product.count)).first
+    end
+  end
 end

@@ -5,11 +5,21 @@ class Admin::ProductsController < ApplicationController
 
   def index
     params[:limit] ||= Settings.admin.user.page_items_limit.level2
-    @search = Product.ransack params[:q]
-    @q = Product.search params[:q]
-    @products = @q.result(distinct: true).includes(:category)
-      .in_category(params[:category_id]).page(params[:page])
-      .per params[:limit].to_i
+    if params[:q].nil?
+      params[:q] = {
+        "order_code_or_user_name_cont" => params[:order_code_or_user_name_cont],
+        "status_eq" => params[:status_eq]
+      }
+    end
+    @search = Order.ransack params[:q]
+    @q = Order.search params[:q]
+    @orders_all = @q.result(distinct: true).order_by_updated_time
+    respond_to do |format|
+      format.html do
+        @orders = @orders_all.page(params[:page]).per params[:limit].to_i
+      end
+      format.xls {send_data Order.to_xls @orders_all}
+    end
   end
 
   def new

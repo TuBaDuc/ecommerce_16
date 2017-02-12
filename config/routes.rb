@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'orders/index'
+  end
+
   devise_for :users, controllers: {
     omniauth_callbacks: "callbacks",
     registrations: "registrations"
@@ -15,5 +19,6 @@ Rails.application.routes.draw do
       resources :products, only: [:index]
     end
     resources :products
+    resources :orders
   end
 end

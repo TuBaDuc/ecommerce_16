@@ -163,3 +163,33 @@ en:
       update:
         msg_update_success: "Update the product is successful."
         msg_update_fail: "Update the product is failed."
+    orders:
+      index:
+        title: "Orders Management"
+        code_or_name: "Code or Customer name"
+        search_by_status: "Search by Status"
+        code: "Code"
+        status: "Status"
+        total_bill: "Total bill"
+        phone: "Phone"
+        ship_address: "Ship address"
+        customer: "Customer"
+        updated_at: "Last update"
+        option: "Option"
+        search: "Search"
+      order:
+        detail: "Detail"
+        delete: "Delete"
+      update:
+        msg_update_success: "Update the order is successful."
+        msg_update_fail: "Update the order is failed."
+      csv:
+        id: "ID"
+        order_code: "Order code"
+        status: "Status"
+        total_pay: "Total pay"
+        customer: "Customer"
+        ship_address: "Ship address"
+        phone: "Phone"
+        created_at: "Created at"
+        updated_at: "Updated at"

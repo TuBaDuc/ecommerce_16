@@ -65,9 +65,10 @@ ActiveRecord::Schema.define(version: 20170209161911) do
     t.integer  "status"
     t.float    "total_bill"
     t.string   "ship_address"
+    t.integer  "contact_phone"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
