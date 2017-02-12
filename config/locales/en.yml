@@ -226,3 +226,9 @@ en:
         processing: "Processing"
         approved: "Approved"
         canceled: "Canceled"
+  products:
+    index:
+      title: "All product"
+      newest_products: "Newest Products"
+      hot_trends: "Hot Trends"
+      recent_view: "Recent View"

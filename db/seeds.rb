@@ -40,7 +40,7 @@ end
 25.times do |p|
   product_name = Faker::Cat.name + p.to_s
   description = Faker::Lorem.sentence
-  price = rand(10000..2000000)
+  price = rand(10.0..1000.0)
   in_stock = rand(0..20)
   category_id = rand(Category.first.id..Category.last.id)
   rating = rand(0..5)
@@ -84,5 +84,12 @@ User.all.order("RANDOM()").limit(25).find_each do |user|
     status: rand(0..2),
     user_id: user.id,
     category_id: Category.offset(rand(Category.count)).first.id
+  end
+end
+
+User.all.order("RANDOM()").limit(50).find_each do |user|
+  Product.all.order("RANDOM()").limit(5).find_each do |product|
+    Like.create! user_id: user.id,
+    product_id: product.id
   end
 end

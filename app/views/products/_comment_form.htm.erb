@@ -1,0 +1,6 @@
+<p><%= t ".comment" %></p>
+<%= form_for [@product, @product.comments.build] do |f| %>
+  <%= f.text_area :content, class: "form-control",
+    placeholder: t(".text_hint") %>
+  <%= f.submit t(".comment_btn"), class: "btn" %>
+<% end %>

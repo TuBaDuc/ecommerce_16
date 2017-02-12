@@ -11,7 +11,7 @@ class Product < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true, length: {maximum: 100}
   validates :code, presence: true, uniqueness: true
-  validates :price, presence: true, numericality: {greater_than: 1000}
+  validates :price, presence: true, numericality: {greater_than: 1}
   validates :in_stock, presence: true,
     numericality: {only_integer: true, greater_than_or_equal_to: 0}
 
@@ -28,5 +28,25 @@ class Product < ApplicationRecord
     last_record = Product.last
     self[:code] =
       last_record.nil? ? "#{prefix_code}.1" : "#{prefix_code}.#{last_record.id + 1}"
+  end
+
+  def self.hot_trend
+    date = Settings.period_date.days.ago
+    product_ids = "select order_details.product_id
+       from order_details
+       where (date(order_details.created_at) > '#{date}')
+       group by order_details.product_id
+       order by sum(order_details.quantity)"
+    Product.where("id IN (#{product_ids})")
+  end
+
+  def self.most_like
+    limit = Settings.most_like_limit
+    product_ids = "select likes.product_id
+       from likes
+       group by likes.product_id
+       order by count(likes.product_id)
+       limit #{limit}"
+    Product.where("id IN (#{product_ids})")
   end
 end

@@ -22,4 +22,5 @@ Rails.application.routes.draw do
     resources :orders
     resources :suggests
   end
+  resources :products
 end
