@@ -4,6 +4,8 @@ class Product < ApplicationRecord
 
   mount_uploader :photo, PhotoUploader
 
+  ratyrate_rateable "quality"
+
   belongs_to :category
   has_many :order_details, dependent: :destroy
   has_many :likes, dependent: :destroy

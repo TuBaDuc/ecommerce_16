@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  load_and_authorize_resource find_by: :slug
+  load_and_authorize_resource  except: :index, find_by: :slug
 
   def index
     if session[:recent]

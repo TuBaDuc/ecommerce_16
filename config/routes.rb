@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post '/rate' => 'rater#create', :as => 'rate'
   namespace :admin do
     get 'orders/index'
   end
@@ -22,5 +23,7 @@ Rails.application.routes.draw do
     resources :orders
     resources :suggests
   end
-  resources :products
+  resources :products do
+    resources :comments
+  end
 end

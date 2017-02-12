@@ -8,6 +8,7 @@ user:
   password_max_length: 128
   photo_max_size: 2097152
   photo_size_large: 250
+  photo_size_small: 50
 admin:
   user:
     page_items_limit:

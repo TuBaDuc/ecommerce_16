@@ -1,0 +1,52 @@
+<%= javascript_include_tag 'ratyrate.js', "data-turbolinks-track" => false %>
+<div class="row">
+  <div class="col-md-4">
+    <%= image_tag @product.photo.present? ? @product.photo : "default.jpg",
+      size: Settings.user.photo_size_large %>
+  </div>
+  <div class="col-md-8">
+    <h2><%= @product.name %></h2>
+    <div>
+      <%= @product.description %>
+    </div>
+    <label class="price"><%= number_to_currency @product.price %></label>
+    <%= link_to "", id: "add-cart-#{@product.id}", data: @product.id,
+      class: "btn btn-sm btn-primary add-to-cart", title: t(".cart") do %>
+        <span class="glyphicon glyphicon-shopping-cart"></span>
+        <%= t ".add_to_cart" %>
+    <% end %>
+    <div class="share">
+      <%= social_share_button_tag @product.name %>
+    </div>
+    <div>
+      <% if current_user %>
+        <%= rating_for @product, "quality", enable_half: true %>
+      <% end %>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="row">
+    <div class="col-sm-12">
+      <ul class="nav nav-tabs">
+        <li class="tab col-sm-3">
+          <a data-toggle="tab" href="#description"><%= t ".description" %></a>
+        </li>
+        <li class="tab col-sm-3">
+          <a class="active" data-toggle="tab" href="#review"><%= t ".review" %>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div id="description" class="tab-pane fade col-sm-12">
+      <%= @product.description %>
+    </div>
+    <div id="review" class="tab-pane fade in active col-sm-12">
+      <%= render "comment_form" if user_signed_in? %>
+      <div class="post_comment">
+        <ul id="comments">
+          <%= render @comments %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

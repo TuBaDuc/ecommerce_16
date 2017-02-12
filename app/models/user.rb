@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   before_save :set_role
 
+  ratyrate_rater
+
   mount_uploader :photo, PhotoUploader
   validate :photo_size
 

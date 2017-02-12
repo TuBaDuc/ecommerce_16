@@ -323,6 +323,7 @@ GEM
       activesupport (>= 3.0)
       i18n
       polyamorous (~> 1.3)
+    ratyrate (1.2.2.alpha)
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
@@ -347,6 +348,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    social-share-button (0.8.8)
+      coffee-rails
     spring (2.0.1)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -410,8 +413,10 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.1)
   ransack
+  ratyrate
   rubocop (~> 0.46.0)
   sass-rails (~> 5.0)
+  social-share-button
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

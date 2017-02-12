@@ -232,3 +232,16 @@ en:
       newest_products: "Newest Products"
       hot_trends: "Hot Trends"
       recent_view: "Recent View"
+    show:
+      description: "Description"
+      review: "Review"
+      add_to_cart: "Add to cart"
+      cart: "Cart"
+    comment_form:
+      btn_comment: "Comment"
+      text_hint: "Comment something here"
+  comments:
+    comment:
+      delete: "Delete"
+      commented: "Commented "
+      ago: " ago"
