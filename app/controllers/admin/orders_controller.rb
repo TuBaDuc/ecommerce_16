@@ -17,7 +17,9 @@ class Admin::OrdersController < ApplicationController
       format.html do
         @orders = @orders_all.page(params[:page]).per params[:limit].to_i
       end
-      format.js
+      format.js do
+        @orders = @orders_all.page(params[:page]).per params[:limit].to_i
+      end
       format.csv do
         send_data Order.to_csv @orders_all
         headers["Content-Disposition"] = "attachment; \
@@ -35,6 +37,9 @@ class Admin::OrdersController < ApplicationController
       end
       redirect_back fallback_location: :back
     end
+  end
+
+  def show
   end
 
   private

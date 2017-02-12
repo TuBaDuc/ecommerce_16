@@ -180,6 +180,7 @@ en:
       order:
         detail: "Detail"
         delete: "Delete"
+        confirm_delete: "Are you sure?"
       update:
         msg_update_success: "Update the order is successful."
         msg_update_fail: "Update the order is failed."
@@ -193,3 +194,12 @@ en:
         phone: "Phone"
         created_at: "Created at"
         updated_at: "Updated at"
+      order_form:
+        title: "Order Detail"
+        code: "Code"
+        status: "Status"
+        detail: "Detail"
+        product_name: "Items name"
+        quantity: "Quantity"
+        price: "Price"
+        ok: "OK"

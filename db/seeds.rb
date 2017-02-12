@@ -56,12 +56,11 @@ end
 User.all.order("RANDOM()").limit(25).find_each do |user|
   orders = rand(1..6)
   address = Faker::Address.street_address + ", " +
-        Faker::Address.city + ", " +
-        Faker::Address.country
+        Faker::Address.city
   orders.times do |n|
     o_status = rand(0..3)
     o_bill = rand(1..15)*105000
-    order = Order.create! code: "ORD"+Faker::Code.ean,
+    order = Order.create! code: "ORD.#{user.id}.#{n}",
     status: o_status,
     total_bill: o_bill,
     ship_address: address,
@@ -72,7 +71,7 @@ User.all.order("RANDOM()").limit(25).find_each do |user|
       order.order_details.create! order_id: order.id,
       quantity: rand(1..3),
       price: (order.total_bill/prod_num).to_i,
-      product_id: Product.offset(rand(Product.count)).first
+      product_id: Product.offset(rand(Product.count)).first.id
     end
   end
 end
