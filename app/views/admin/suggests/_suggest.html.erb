@@ -1,0 +1,78 @@
+<div class="col-sm-12">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <%= suggest.title %>
+      <% if suggest.processing? %>
+        <span class="text-right badge badge-processing">
+          <%= Suggest.enum_to_humanize :status, suggest.status %>
+        </span>
+        <div class="pull-right">
+          <%= link_to admin_suggest_path(suggest, status: :approved),
+            class: "btn btn-success",
+            data: {tooltip: I18n.t(".approved"), confirm: t(".sure")},
+            method: :put do %>
+            <span class="glyphicon glyphicon-ok-sign"></span>
+            <%= t ".approved" %>
+          <% end %>
+          <%= link_to admin_suggest_path(suggest, status: :canceled),
+            class: "btn btn-danger",
+            data: {tooltip: I18n.t(".canceled"), confirm: t(".sure")},
+            method: :put do %>
+            <span class="glyphicon glyphicon-ban-circle"></span>
+            <%= t ".canceled" %>
+          <% end %>
+        </div>
+      <% elsif suggest.approved? %>
+        <span class="text-right badge badge-approved">
+          <%= Suggest.enum_to_humanize :status, suggest.status %>
+        </span>
+        <div class="pull-right">
+          <%= link_to admin_suggest_path(suggest, status: :processing),
+            class: "btn btn-default",
+            data: {tooltip: I18n.t(".processing"), confirm: t(".sure")},
+            method: :put do %>
+            <span class="glyphicon glyphicon-play"></span>
+            <%= t ".processing" %>
+          <% end %>
+          <%= link_to admin_suggest_path(suggest, status: :canceled),
+            class: "btn btn-default",
+            data: {tooltip: I18n.t(".canceled"), confirm: t(".sure")},
+            method: :put do %>
+            <span class="glyphicon glyphicon-ban-circle"></span>
+            <%= t ".canceled" %>
+          <% end %>
+        </div>
+      <% elsif suggest.canceled? %>
+        <span class="text-right badge-canceled badge ">
+          <%= Suggest.enum_to_humanize :status, suggest.status %>
+        </span>
+        <div class="pull-right">
+          <%= link_to admin_suggest_path(suggest, status: :processing),
+            class: "btn btn-default",
+            data: {tooltip: I18n.t(".processing"), confirm: t(".sure")},
+            method: :put do %>
+            <span class="glyphicon glyphicon-play"></span>
+            <%= t ".processing" %>
+          <% end %>
+          <%= link_to admin_suggest_path(suggest, status: :approved),
+            class: "btn btn-success",
+            data: {tooltip: I18n.t(".approved"), confirm: t(".sure")},
+            method: :put do %>
+            <span class="glyphicon glyphicon-ok-sign"></span>
+            <%= t ".approved" %>
+          <% end %>
+        </div>
+      <% end %>
+      <div>
+        <span class="glyphicon glyphicon-user"></span>
+        <%= suggest.user_name %> (
+        <%= t ".suggested_at" %>
+        <%= time_ago_in_words suggest.created_at %>
+        <%= t ".ago" %> )
+      </div>
+    </div>
+    <div class="panel-body">
+      <%= suggest.content %>
+    </div>
+  </div>
+</div>

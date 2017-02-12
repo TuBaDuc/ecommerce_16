@@ -203,3 +203,26 @@ en:
         quantity: "Quantity"
         price: "Price"
         ok: "OK"
+    suggests:
+      index:
+        title: "Suggest Center"
+        title_content_username: "Title, content or username"
+      suggest:
+        approved: "Approved"
+        processing: "Processing"
+        canceled: "Canceled"
+        sure: "Are you sure to change the status of this suggestion?"
+        suggested_at: "Suggested at "
+        ago: " ago."
+        approved: "Approve"
+        canceled: "Cancel"
+        processing: "Process"
+      update:
+        msg_update_success: "Update the suggest is successful."
+        msg_update_fail: "Update the suggest is failed."
+  activerecord:
+    suggest:
+      statuses:
+        processing: "Processing"
+        approved: "Approved"
+        canceled: "Canceled"

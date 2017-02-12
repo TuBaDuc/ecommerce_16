@@ -1,0 +1,41 @@
+<% provide :title, t(".title") %>
+<h2 class="center">
+  <span class="glyphicon glyphicon-send"></span> <%= t ".title" %>
+</h2>
+<div class="row">
+  <div class="col-md-3 pull-right">
+    <%= search_form_for @search, url: admin_products_path,
+      class: "navbar-form" do |f| %>
+    <%= f.label :display %>
+    <%= select_tag :limit,
+      options_from_collection_for_select(Settings.admin.user.page_items_limit,
+        :second, :second, selected: params[:limit]),
+      class: "form-control", id: "items-limit" %>
+    <%= f.label :records %>
+    <%= f.submit "", class: "invisible" %>
+    <% end %>
+  </div>
+  <%= search_form_for @q, url: admin_suggests_path,
+    class: "navbar-form col-md-5", id: "order_search_q" do |f| %>
+    <div class="navbar-form col-md-8 input-group add-on">
+      <%= f.text_field :title_or_content_or_user_name_cont, class: "form-control",
+        autofocus: true, placeholder: t(".title_content_username") %>
+      <div class="input-group-btn">
+        <%= button_tag class: "btn btn-default" do %>
+          <span class="glyphicon glyphicon-search"></span>
+        <% end %>
+      </div>
+    </div>
+    <div class="navbar-form col-md-4 pull-right">
+      <%= f.select :status_eq, Suggest.statuses.to_a.map{|m| [m[0].humanize, m[1]]},
+      {include_blank: t(".search_by_status")},
+      {class: "form-control", id: "search_by_status"} %>
+    </div>
+  <% end %>
+</div>
+<div class="row" id="list">
+  <%= render @suggests %>
+</div>
+<div id="paging" class="text-center">
+  <%= paginate @suggests, remote: true %>
+</div>

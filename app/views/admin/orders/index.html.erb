@@ -8,13 +8,13 @@
     <div class="navbar-form col-md-8 input-group add-on">
       <%= f.text_field :code_or_user_name_cont, class: "form-control",
         autofocus: true, placeholder: t(".code_or_name") %>
-      <div class="input-group-btn">
+      <div class="input-group-btn pull-left">
         <%= button_tag class: "btn btn-default" do %>
           <span class="glyphicon glyphicon-search"></span>
         <% end %>
       </div>
     </div>
-    <div class="navbar-form col-md-4 pull-right">
+    <div class="navbar-form col-md-4">
       <%= f.select :status_eq, Order.statuses.to_a.map{|m| [m[0].humanize, m[1]]},
       {include_blank: t(".search_by_status")},
       {class: "form-control", id: "search_by_status"} %>

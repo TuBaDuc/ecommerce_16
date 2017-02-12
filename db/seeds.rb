@@ -75,3 +75,14 @@ User.all.order("RANDOM()").limit(25).find_each do |user|
     end
   end
 end
+
+User.all.order("RANDOM()").limit(25).find_each do |user|
+  number = rand(1..3)
+  number.times do |n|
+    order = Suggest.create! title: Faker::Book.title,
+    content: Faker::Lorem.sentence,
+    status: rand(0..2),
+    user_id: user.id,
+    category_id: Category.offset(rand(Category.count)).first.id
+  end
+end

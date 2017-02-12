@@ -91,8 +91,7 @@ ActiveRecord::Schema.define(version: 20170209161911) do
   create_table "suggests", force: :cascade do |t|
     t.string   "title"
     t.string   "content"
-    t.string   "status"
-    t.string   "integer"
+    t.integer  "status"
     t.integer  "user_id"
     t.integer  "category_id"
     t.datetime "created_at",  null: false
