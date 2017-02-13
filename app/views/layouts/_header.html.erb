@@ -1,6 +1,7 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <%= link_to t("header.logo_title"), root_path, id: "logo" %>
+
     <nav>
       <ul class="nav navbar-nav navbar-right" id="menu-top">
         <li>
@@ -16,6 +17,23 @@
           </ul>
         </li>
       <% if user_signed_in? %>
+        <% if current_user.admin? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="glyphicon glyphicon-list-alt"></span>
+              <%= t("header.management") %>
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="divider"></li>
+              <li><%= link_to t("header.admin_users"), admin_users_path %></li>
+              <li><%= link_to t("header.admin_categories"), admin_categories_path %></li>
+              <li><%= link_to t("header.admin_products"), admin_products_path %></li>
+              <li><%= link_to t("header.admin_orders"), admin_orders_path %></li>
+              <li><%= link_to t("header.admin_suggests"), admin_suggests_path %></li>
+            </ul>
+          </li>
+        <% end %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <span class="glyphicon glyphicon-user"></span>
@@ -23,6 +41,7 @@
             <b class="caret"></b>
           </a>
           <ul class="dropdown-menu">
+            <li><%= link_to t("header.history_orders"), orders_path %></li>
             <li><%= link_to t("header.profile"), user_path(current_user) %></li>
             <li><%= link_to t("header.edit_profile"),
               edit_user_registration_path %></li>

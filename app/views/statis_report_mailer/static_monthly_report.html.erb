@@ -1,0 +1,23 @@
+<h3><%= t "monthly_report" %></h3>
+<% @orders.each do |order| %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= t "satic_mail.code" %></th>
+        <th><%= t "satic_mail.user" %></th>
+        <th><%= t "satic_mail.ship_address" %></th>
+        <th><%= t "satic_mail.contact_phone" %></th>
+        <th><%= t "satic_mail.total_price" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= order.code %></td>
+        <td><%= order.user_name %></td>
+        <td><%= order.ship_address %></td>
+        <td><%= order.contact_phone %></td>
+        <td><%= number_to_currency order.total_bill %></td>
+      </tr>
+    </tbody>
+  </table>
+<% end %>

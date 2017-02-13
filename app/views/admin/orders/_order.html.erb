@@ -5,7 +5,7 @@
   <td class="text-left">
     <%= form_tag admin_order_path(order) , method: :put, remote: true do %>
       <%= select_tag :status, options_from_collection_for_select(Order.statuses,
-        :first, :first, order.status), class: "form-control",
+        :first, (:first).to_s, order.status), class: "form-control",
         id: "change_status_order_#{order.id}" %>
       <%= submit_tag "", style: "display: none" %>
     <% end %>

@@ -9,6 +9,12 @@
     <div>
       <%= @product.description %>
     </div>
+
+    <div>
+      <%= label_tag :category %>
+      <%= link_to @product.category.name, category_path(@product.category.id) %>
+    </div>
+
     <div class="image">
       <label class="price"><%= number_to_currency @product.price %></label>
       <%= link_to "", id: "add-cart-#{@product.id}", data: @product.id,
@@ -17,6 +23,7 @@
           <%= t ".add_to_cart" %>
       <% end %>
     </div>
+
     <div class="share">
       <%= social_share_button_tag @product.name %>
     </div>

@@ -60,8 +60,7 @@ User.all.order("RANDOM()").limit(25).find_each do |user|
   orders.times do |n|
     o_status = rand(0..3)
     o_bill = rand(1..15)*105000
-    order = Order.create! code: "ORD.#{user.id}.#{n}",
-    status: o_status,
+    order = Order.create! status: o_status,
     total_bill: o_bill,
     ship_address: address,
     contact_phone: user.phone,

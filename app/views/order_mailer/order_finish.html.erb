@@ -1,0 +1,20 @@
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th><%= t "order_mail.name" %></th>
+        <th><%= t "order_mail.quantity" %></th>
+        <th><%= t "order_mail.price" %>($)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.order_details.each do |order_detail| %>
+        <tr>
+          <td><%= order_detail.product_name %></td>
+          <td><%= order_detail.quantity %></td>
+          <td><%= order_detail.price %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

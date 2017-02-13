@@ -1,0 +1,51 @@
+<% provide :title, t(".title") %>
+<h2 class="center">
+  <span class="glyphicon glyphicon-shopping-cart"></span> <%= t ".title" %>
+</h2>
+<div class="row">
+  <div class="col-md-3 pull-right">
+    <%= search_form_for @search, url: orders_path,
+      class: "navbar-form" do |f| %>
+    <%= f.label :display %>
+    <%= select_tag :limit,
+      options_from_collection_for_select(Settings.admin.user.page_items_limit,
+        :second, :second, selected: params[:limit]),
+      class: "form-control", id: "items-limit" %>
+    <%= f.label :records %>
+    <%= f.submit "", class: "invisible" %>
+    <% end %>
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th class="text-left">
+        <%= t ".code" %>
+      </th>
+      <th class="text-left">
+        <%= t ".action" %>
+      </th>
+      <th class="text-left">
+        <%= t ".status" %>
+      </th>
+      <th class="text-left">
+        <%= t ".total_bill" %>
+      </th>
+      <th class="text-left">
+        <%= t ".phone" %>
+      </th>
+      <th class="col-md-3 ext-left">
+        <%= t ".ship_address" %>
+      </th>
+      <th class="text-left">
+        <%= t ".created_at" %>
+      </th>
+    </tr>
+  </thead>
+  <tbody id="list">
+    <%= render @orders %>
+  </tbody>
+</table>
+<div id="paging text-center">
+  <%= paginate @orders, remote: true %>
+</div>

@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
     @comment = @product.comments.create comment_params
     @comment.user = current_user
     @comments = @product.comments if @comment.save
-    #render partial: "comment", locals: {comment: @comment} if @comment.save
   end
 
   def destroy

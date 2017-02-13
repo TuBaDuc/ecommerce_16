@@ -1,0 +1,22 @@
+<tr>
+  <td>
+    <%= product.code %>
+  </td>
+  <td>
+    <%= link_to product.name, product_path(product) %>
+  </td>
+  <td>
+    <%= image_tag product.photo.present? ? product.photo : "default.jpg",
+      size: Settings.cart.item_photo_size,
+      data: {caption: product.description} %>
+  </td>
+  <td class="cart-product-price-<%= product.id %>">
+    <%= product.price %>
+  </td>
+  <td>
+    <%= cart_params["quantity"] %>
+  </td>
+  <td>
+    <%= calc_total_price_for product, cart_params["quantity"] %>
+  </td>
+</tr>

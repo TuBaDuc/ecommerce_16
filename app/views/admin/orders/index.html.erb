@@ -5,10 +5,10 @@
 <div class="row navbar-form">
   <%= search_form_for @q, url: admin_orders_path,
     class: "col-md-5", id: "order_search_q" do |f| %>
-    <div class="navbar-form col-md-8 input-group add-on">
+    <div class="navbar-form col-md-8 input-group add-on pull-left">
       <%= f.text_field :code_or_user_name_cont, class: "form-control",
         autofocus: true, placeholder: t(".code_or_name") %>
-      <div class="input-group-btn pull-left">
+      <div class="input-group-btn">
         <%= button_tag class: "btn btn-default" do %>
           <span class="glyphicon glyphicon-search"></span>
         <% end %>

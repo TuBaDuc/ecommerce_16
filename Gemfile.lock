@@ -69,8 +69,14 @@ GEM
     config (1.4.0)
       activesupport (>= 3.0)
       deep_merge (~> 1.1.1)
+    connection_pool (2.2.1)
     debug_inspector (0.0.2)
     deep_merge (1.1.1)
+    delayed_job (4.1.2)
+      activesupport (>= 3.0, < 5.1)
+    delayed_job_active_record (4.1.1)
+      activerecord (>= 3.0, < 5.1)
+      delayed_job (>= 3.0, < 5)
     devise (4.2.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -290,6 +296,8 @@ GEM
     powerpack (0.1.1)
     puma (3.7.0)
     rack (2.0.1)
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.1)
@@ -332,6 +340,7 @@ GEM
       json (>= 1.8)
       nokogiri (~> 1.5)
       trollop (~> 2.1)
+    redis (3.3.2)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     rubocop (0.46.0)
@@ -348,6 +357,11 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    sidekiq (4.2.9)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (~> 3.2, >= 3.2.1)
     social-share-button (0.8.8)
       coffee-rails
     spring (2.0.1)
@@ -397,6 +411,7 @@ DEPENDENCIES
   carrierwave (= 0.11.2)
   coffee-rails (~> 4.2)
   config
+  delayed_job_active_record
   devise
   faker
   figaro
@@ -416,6 +431,7 @@ DEPENDENCIES
   ratyrate
   rubocop (~> 0.46.0)
   sass-rails (~> 5.0)
+  sidekiq
   social-share-button
   spring
   spring-watcher-listen (~> 2.0.0)

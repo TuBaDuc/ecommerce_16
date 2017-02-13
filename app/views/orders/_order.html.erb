@@ -1,0 +1,30 @@
+<tr>
+  <td class="text-left">
+    <%= order.code %>
+  </td>
+  <td class="text-left">
+    <% if order.in_progress? %>
+      <%= link_to order_path(order, status: :cancel), method: :put,
+        class: "form-control",
+        data: {confirm: t(".sure_delete")}, remote: true do %>
+        <span class="glyphicon glyphicon-remove"></span>
+        <%= t ".cancel" %>
+      <% end %>
+    <% end %>
+  </td>
+  <td class="text-left">
+    <%= Order.enum_to_humanize :status, order.status %>
+  </td>
+  <td class="text-left">
+    <%= order.total_bill %>
+  </td>
+  <td class="text-left">
+    <%= order.contact_phone %>
+  </td>
+  <td class="text-left">
+    <%= order.ship_address %>
+  </td>
+  <td class="text-left">
+    <%= l order.created_at, format: :date_format %>
+  </td>
+</tr>

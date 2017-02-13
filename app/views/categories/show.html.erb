@@ -1,0 +1,31 @@
+<% provide :title, t(".title") %>
+<div class="row">
+  <h2><%= t ".all_products_of" %> <%= @category.name %></h2>
+</div>
+<%= search_form_for @q, url: products_path, class: "form-inline" do |f| %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= f.label :name_cont, t(".products_name") %>
+      <%= f.text_field :name_cont, class: "form-control mb-2 mr-sm-2 mb-sm-0" %>
+    </div>
+    <div class="col-md-4">
+      <%= f.label :price_gteq, t(".price_from") %>
+      <%= f.number_field :price_gteq, min: 0, class: "form-control mb-2 mr-sm-2 mb-sm-0" %>
+    </div>
+    <div class="col-md-3">
+      <%= f.label :price_lteq, t(".price_to") %>
+      <%= f.number_field :price_lteq, min: 0, class: "form-control mb-2 mr-sm-2 mb-sm-0" %>
+    </div>
+    <div class="col-md-2">
+      <%= f.submit t(".search"), class: "btn btn-sm btn-primary align-bottom" %>
+    </div>
+  </div>
+<% end %>
+</br>
+<div class="row" id="list">
+  <%= render @products %>
+</div>
+<%= paginate @products %>
+<div id="paging" class="text-center">
+  <%= paginate @products, remote: true %>
+</div>
