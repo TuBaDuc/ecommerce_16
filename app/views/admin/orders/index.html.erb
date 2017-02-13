@@ -1,0 +1,81 @@
+<% provide :title, t(".title") %>
+<h2 class="center">
+  <span class="glyphicon glyphicon-shopping-cart"></span> <%= t ".title" %>
+</h2>
+<div class="row navbar-form">
+  <%= search_form_for @q, url: admin_orders_path,
+    class: "col-md-5", id: "order_search_q" do |f| %>
+    <div class="navbar-form col-md-8 input-group add-on">
+      <%= f.text_field :code_or_user_name_cont, class: "form-control",
+        autofocus: true, placeholder: t(".code_or_name") %>
+      <div class="input-group-btn pull-left">
+        <%= button_tag class: "btn btn-default" do %>
+          <span class="glyphicon glyphicon-search"></span>
+        <% end %>
+      </div>
+    </div>
+    <div class="navbar-form col-md-4">
+      <%= f.select :status_eq, Order.statuses.to_a.map{|m| [m[0].humanize, m[1]]},
+      {include_blank: t(".search_by_status")},
+      {class: "form-control", id: "search_by_status"} %>
+    </div>
+  <% end %>
+
+  <div class="col-md-2 navbar-form">
+    <%= link_to admin_orders_path(params.require(:q).
+      permit(:code_or_user_name_cont, :status_eq).merge(format: :csv)),
+      class: "form-control btn-info" do %>
+      <span class="glyphicon glyphicon-download"></span>
+      <%= t ".file_download" %>
+    <% end %>
+  </div>
+
+  <div class="col-md-3 pull-right">
+    <%= search_form_for @search, url: admin_products_path,
+      class: "navbar-form" do |f| %>
+    <%= f.label :display %>
+    <%= select_tag :limit,
+      options_from_collection_for_select(Settings.admin.user.page_items_limit,
+        :second, :second, selected: params[:limit]),
+      class: "form-control", id: "items-limit" %>
+    <%= f.label :records %>
+    <%= f.submit "", class: "invisible" %>
+    <% end %>
+  </div>
+</div>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th class="text-left">
+        <%= t ".code" %>
+      </th>
+      <th class="text-left">
+        <%= t ".status" %>
+      </th>
+      <th class="text-left">
+        <%= t ".total_bill" %>
+      </th>
+      <th class="text-left">
+        <%= t ".phone" %>
+      </th>
+      <th class="col-md-3 ext-left">
+        <%= t ".ship_address" %>
+      </th>
+      <th class="text-left">
+        <%= t ".customer" %>
+      </th>
+      <th class="text-left">
+        <%= t ".updated_at" %>
+      </th>
+      <th class="text-left">
+        <%= t ".option" %>
+      </th>
+    </tr>
+  </thead>
+  <tbody id="list">
+    <%= render @orders %>
+  </tbody>
+</table>
+<div id="paging" class="text-center">
+  <%= paginate @orders, remote: true %>
+</div>

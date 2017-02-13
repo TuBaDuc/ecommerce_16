@@ -8,6 +8,7 @@ user:
   password_max_length: 128
   photo_max_size: 2097152
   photo_size_large: 250
+  photo_size_small: 50
 admin:
   user:
     page_items_limit:
@@ -16,3 +17,13 @@ admin:
       level3: 50
   product:
     prefix_code: "PRD"
+show_limit:
+  show_8: 8
+  show_20: 20
+  show_50: 40
+period_date: 7
+most_like_limit: 6
+carousel_photo_size: 300
+recent_items_limit: 8
+cart:
+  item_photo_size: 30

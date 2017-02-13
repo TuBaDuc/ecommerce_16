@@ -1,0 +1,49 @@
+<% if cart.nil? || cart.empty? %>
+  <div id="cart-wrapper">
+    <li id="empty-cart">
+      <div class="col-md-12">
+        <div class="card grey lighten-5">
+          <div class="row vertical-alignr">
+            <div class="col-sm-12 center">
+              <span><%= t ".cart_empty" %></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </div>
+<% else %>
+  <div id="cart-wrapper">
+    <% cart.each do |key, value| %>
+        <li class="cart-item">
+        <div class="col-md-12">
+          <div class="card grey lighten-5">
+            <div class="row vertical-align">
+              <div class="col-sm-2 ">
+                  <%= image_tag value["image_url"], size: Settings.cart.item_photo_size %>
+              </div>
+              <div class="col-sm-10">
+                <span class="black-text cart-desc"><%= value["name"] %></span>
+                <span class="badge right grey white-text">
+                  <%= value["quantity"] %> <%= t ".items" %>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="divider"></li>
+    <% end %>
+    <li>
+      <div class="col-md-12">
+        <div class="card checkout-cart">
+          <div class="row vertical-align">
+            <div class="col-sm-12 center">
+              <%= link_to t(".check_out"), cart_path %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </div>
+<% end %>

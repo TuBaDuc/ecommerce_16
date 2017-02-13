@@ -1,0 +1,71 @@
+<% provide :title, t(".title") %>
+<h2 class="center">
+  <span class="glyphicon glyphicon-shopping-cart"></span> <%= t ".title" %>
+</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th><%= t ".code" %></th>
+    <th><%= t ".name" %></th>
+    <th><%= t ".photo" %></th>
+    <th><%= t ".price" %></th>
+    <th><%= t ".quantity" %></th>
+    <th><%= t ".total_price" %></th>
+    <th><%= t ".action" %></th>
+  </tr>
+  </thead>
+  <% @product_carts.each do |product, in_cart| %>
+    <% unless product.nil? %>
+      <tr>
+        <td><%= product.code %></td>
+        <td>
+          <%= link_to product.name, product_path(product) %></td>
+        <td>
+          <%= image_tag product.photo.present? ? product.photo : "default.jpg",
+            size: Settings.cart.item_photo_size,
+            data: {caption: product.description} %>
+        </td>
+        <td>
+          <p id="price-<%= product.id %>">
+            <%= product.price %>
+          </p>
+        </td>
+        <td>
+          <input type="number" name="quantity" min="1"
+          max="<%= product.in_stock %>" value="<%= in_cart["quantity"] %>"
+          data="<%= product.id %>" class="cart-quantity form-control"
+          id= "quantity-<%= product.id %>">
+        </td>
+        <td>
+          <p id="total-<%= product.id %>">
+            <%= calc_total_price_for product, in_cart["quantity"] %>
+          </p>
+        </td>
+        <td>
+          <%= link_to "/cart/#{product.id}/delete", class: "btn btn-xs btn-danger",
+            method: :delete, data: {confirm: t(".delete_confirm")} do %>
+            <span class="glyphicon glyphicon-trash"></span>
+            <%= t ".delete" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+<div class="divider"></div>
+<h2 class="text-center">
+  <%= label_tag :total_pay, t(".total_pay") %>
+  <span class="label label-danger" id="total_pay"><%= calc_total_pay @product_carts %></span>
+</h2>
+<br>
+<div class="pull-right">
+  <% if @product_carts.size > 0 %>
+    <%= link_to t(".buy_more"), products_path,
+      class: "btn btn-primary" %>
+    <%= link_to t(".check_out"), {},
+      class: "btn btn-success", id: "update-cart" %>
+  <% else %>
+    <%= link_to t(".new_cart"), products_path,
+      class: "btn btn-primary" %>
+  <% end %>
+</div>

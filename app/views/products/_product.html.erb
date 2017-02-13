@@ -1,0 +1,35 @@
+<div class="col-md-3 center">
+  <span style="display: none" id="in-stock-<%= product.id %>"><%= product.in_stock %></span>
+  <div class="card" id="<%= product.name %>">
+    <div class="card-photo">
+      <%= image_tag product.photo.present? ? product.photo : "default.jpg",
+        class: "card-img-top", data: {caption: product.description} %>
+    </div>
+    <div class="card-block">
+      <div class="card-content">
+        <p class="card-title">
+          <%= product.name %> | <%= number_to_currency product.price %> |
+            <%= product.in_stock %> <%= t "admin.products.index.in_stock" %>
+        </p>
+      </div>
+      <div class="card-footer text-muted">
+        <%= link_to product_path(product), class: "btn btn-sm btn-default" do %>
+          <span class="glyphicon glyphicon-eye-open"></span>
+          <%= t ".detail" %>
+        <% end %>
+        <% if product.in_stock > 0 %>
+          <%= link_to "", id: "add-cart-#{product.id}", data: product.id,
+            class: "btn btn-primary btn-sm add-to-cart" do %>
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <%= t ".add_to_cart" %>
+          <% end %>
+        <% else %>
+          <a class="btn disabled btn-sm btn-danger">
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <%= t ".out_of_stock" %>
+          </a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

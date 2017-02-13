@@ -1,0 +1,6 @@
+<p><%= t ".comment" %></p>
+<%= form_for [@product, @product.comments.build], remote: true do |f| %>
+  <%= f.text_area :content, class: "form-control",
+    placeholder: t(".text_hint") %>
+  <%= f.submit t(".btn_comment"), class: "btn btn-lg btn-primary navbar-form pull-right" %>
+<% end %>

@@ -1,0 +1,35 @@
+<tr>
+  <td class="text-left">
+    <%= order.code %>
+  </td>
+  <td class="text-left">
+    <%= form_tag admin_order_path(order) , method: :put, remote: true do %>
+      <%= select_tag :status, options_from_collection_for_select(Order.statuses,
+        :first, :first, order.status), class: "form-control",
+        id: "change_status_order_#{order.id}" %>
+      <%= submit_tag "", style: "display: none" %>
+    <% end %>
+  </td>
+  <td class="text-left">
+    <%= order.total_bill %>
+  </td>
+  <td class="text-left">
+    <%= order.contact_phone %>
+  </td>
+  <td class="text-left">
+    <%= order.ship_address %>
+  </td>
+  <td class="text-left">
+    <%= order.user_name %>
+  </td>
+  <td class="text-left">
+    <%= l order.updated_at, format: :date_format %>
+  </td>
+  <td class="text-left">
+    <%= link_to admin_order_path(order),
+      class: "btn btn-info btn-xs", remote: true, id: order.id do %>
+      <span class="glyphicon glyphicon-eye-open"></span>
+      <%= t ".detail" %>
+    <% end %>
+  </td>
+</tr>

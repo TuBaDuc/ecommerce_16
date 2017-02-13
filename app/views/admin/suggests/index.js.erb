@@ -1,0 +1,2 @@
+$('#list').html('<%= escape_javascript render @suggests %>');
+$('#paging').html('<%= escape_javascript paginate(@suggests, :remote => true).to_s %>');

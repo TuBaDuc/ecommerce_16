@@ -38,7 +38,7 @@ gem "jbuilder", "~> 2.5"
 # Project 2 gem
 gem "rubocop", "~> 0.46.0", require: false
 gem "config"
-gem "i18n-js"
+gem "i18n-js", ">= 3.0.0.rc11"
 gem "bootstrap-sass", "3.3.6"
 gem "devise"
 gem "carrierwave", "0.11.2"
@@ -52,6 +52,8 @@ gem "ransack"
 gem "faker"
 gem "awesome_nested_set"
 gem "friendly_id"
+gem "social-share-button"
+gem "ratyrate"
 
 group :development, :test do
   # Call "byebug" anywhere in the code to stop execution and get a debugger console

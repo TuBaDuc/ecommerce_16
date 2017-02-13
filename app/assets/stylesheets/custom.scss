@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "social-share-button";
 
 /* mixins, variables, etc. */
 
@@ -44,7 +45,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2em;
+  font-size: 2em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   text-align: center;
@@ -113,3 +114,37 @@ footer {
   margin-top: 10px;
   margin-bottom: 10px;
 }
+
+/*budge*/
+.badge {
+  color: #ffffff !important;
+}
+.badge-canceled {
+  background-color: #f89406 !important;
+}
+.badge-canceled:hover {
+  background-color: #c67605 !important;
+}
+.badge-approved {
+  background-color: #468847 !important;
+}
+.badge-approved:hover {
+  background-color: #356635 !important;
+}
+.badge-processing {
+  background-color: #333333 !important;
+}
+.badge-processing:hover {
+  background-color: #1a1a1a !important;
+}
+
+/*card*/
+.card {
+  padding-bottom: 15px;
+}
+
+.divider {
+position: relative;
+border-bottom: 1px solid #f0f0f0;
+margin-bottom: 30px;
+margin-top: 30px; }

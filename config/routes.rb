@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  post '/rate' => 'rater#create', :as => 'rate'
+  namespace :admin do
+    get 'orders/index'
+  end
+
   devise_for :users, controllers: {
     omniauth_callbacks: "callbacks",
     registrations: "registrations"
@@ -15,5 +20,14 @@ Rails.application.routes.draw do
       resources :products, only: [:index]
     end
     resources :products
+    resources :orders
+    resources :suggests
   end
+  resources :products do
+    resources :comments
+  end
+  get "/cart", to: "cart#index"
+  post "/cart/:id", to: "cart#create"
+  delete "/cart/:id/delete", to: "cart#destroy"
+  patch "/cart", to: "cart#update"
 end

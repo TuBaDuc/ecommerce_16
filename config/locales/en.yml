@@ -145,7 +145,7 @@ en:
         code: "Code"
         description: description
         required: "Required"
-        price: "Price (VND)"
+        price: "Price ($)"
         in_stock: "In stock"
         add: "Add"
         update: "Update"
@@ -163,3 +163,104 @@ en:
       update:
         msg_update_success: "Update the product is successful."
         msg_update_fail: "Update the product is failed."
+    orders:
+      index:
+        title: "Orders Management"
+        code_or_name: "Code or Customer name"
+        search_by_status: "Search by Status"
+        code: "Code"
+        status: "Status"
+        total_bill: "Total bill"
+        phone: "Phone"
+        ship_address: "Ship address"
+        customer: "Customer"
+        updated_at: "Last update"
+        option: "Option"
+        search: "Search"
+      order:
+        detail: "Detail"
+        delete: "Delete"
+        confirm_delete: "Are you sure?"
+      update:
+        msg_update_success: "Update the order is successful."
+        msg_update_fail: "Update the order is failed."
+      csv:
+        id: "ID"
+        order_code: "Order code"
+        status: "Status"
+        total_pay: "Total pay"
+        customer: "Customer"
+        ship_address: "Ship address"
+        phone: "Phone"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      order_form:
+        title: "Order Detail"
+        code: "Code"
+        status: "Status"
+        detail: "Detail"
+        product_name: "Items name"
+        quantity: "Quantity"
+        price: "Price"
+        ok: "OK"
+    suggests:
+      index:
+        title: "Suggest Center"
+        title_content_username: "Title, content or username"
+      suggest:
+        approved: "Approved"
+        processing: "Processing"
+        canceled: "Canceled"
+        sure: "Are you sure to change the status of this suggestion?"
+        suggested_at: "Suggested at "
+        ago: " ago."
+        approved: "Approve"
+        canceled: "Cancel"
+        processing: "Process"
+      update:
+        msg_update_success: "Update the suggest is successful."
+        msg_update_fail: "Update the suggest is failed."
+  activerecord:
+    suggest:
+      statuses:
+        processing: "Processing"
+        approved: "Approved"
+        canceled: "Canceled"
+  products:
+    index:
+      title: "All product"
+      newest_products: "Newest Products"
+      hot_trends: "Hot Trends"
+      recent_view: "Recent View"
+    show:
+      description: "Description"
+      review: "Review"
+      add_to_cart: "Add to cart"
+      cart: "Cart"
+    comment_form:
+      btn_comment: "Comment"
+      text_hint: "Comment something here"
+  comments:
+    comment:
+      delete: "Delete"
+      commented: "Commented "
+      ago: " ago"
+  cart:
+    cart_item:
+      cart_empty: "No Items"
+      items: "items"
+      check_out: "Check Out"
+    index:
+      title: "Check Out"
+      code: "Code"
+      name: "Name"
+      photo: "Photo"
+      price: "Price ($)"
+      quantity: "Quantity"
+      total_price: "Total Price"
+      action: "Remove"
+      delete_confirm: "Are you sure?"
+      total_pay: "Total pay: "
+      check_out: "Check out"
+      next: "Next"
+      buy_more: "Buy more"
