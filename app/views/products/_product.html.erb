@@ -1,6 +1,6 @@
-<div class="col-md-3 center" id="<%= product.name %>">
+<div class="col-md-3 center">
   <span style="display: none" id="in-stock-<%= product.id %>"><%= product.in_stock %></span>
-  <div class="card">
+  <div class="card" id="<%= product.name %>">
     <div class="card-photo">
       <%= image_tag product.photo.present? ? product.photo : "default.jpg",
         class: "card-img-top", data: {caption: product.description} %>

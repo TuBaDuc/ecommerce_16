@@ -221,8 +221,8 @@ GEM
       activesupport (>= 4.1.0)
     hashie (3.5.1)
     i18n (0.8.0)
-    i18n-js (2.1.2)
-      i18n
+    i18n-js (3.0.0.rc15)
+      i18n (~> 0.6, >= 0.6.6)
     inflecto (0.0.2)
     ipaddress (0.8.3)
     jbuilder (2.6.1)
@@ -402,7 +402,7 @@ DEPENDENCIES
   figaro
   fog (= 1.38.0)
   friendly_id
-  i18n-js
+  i18n-js (>= 3.0.0.rc11)
   jbuilder (~> 2.5)
   jquery-rails
   kaminari

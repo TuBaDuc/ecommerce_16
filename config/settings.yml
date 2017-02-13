@@ -25,3 +25,5 @@ period_date: 7
 most_like_limit: 6
 carousel_photo_size: 300
 recent_items_limit: 8
+cart:
+  item_photo_size: 30

@@ -3,6 +3,18 @@
     <%= link_to t("header.logo_title"), root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right" id="menu-top">
+        <li>
+          <a class="dropdown" id="shopping-cart" data-toggle="dropdown">
+            <span class="glyphicon glyphicon-shopping-cart"></span>
+            <b class="caret"></b>
+            <span class="badge number-cart">
+              <%= session[:cart].nil? ? 0 : session[:cart].size %>
+            </span>
+          </a>
+          <ul id="dropdown-items" class="dropdown-menu drop-cart">
+            <%= render partial: "cart/cart_item", locals: {cart: session[:cart]} %>
+          </ul>
+        </li>
       <% if user_signed_in? %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">

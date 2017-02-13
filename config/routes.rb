@@ -26,4 +26,9 @@ Rails.application.routes.draw do
   resources :products do
     resources :comments
   end
+  get "/cart", to: "cart#index"
+  post "/cart/:id", to: "cart#create"
+  delete "/cart/:id/delete", to: "cart#destroy"
+  patch "/cart", to: "cart#update"
+  get "/cart/:id/edit", to: "cart#edit"
 end

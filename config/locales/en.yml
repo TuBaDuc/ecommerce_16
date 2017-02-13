@@ -245,3 +245,8 @@ en:
       delete: "Delete"
       commented: "Commented "
       ago: " ago"
+  cart:
+    cart_item:
+      cart_empty: "No Items"
+      items: "items"
+      check_out: "Check Out"
