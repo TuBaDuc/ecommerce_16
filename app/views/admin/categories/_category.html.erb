@@ -9,12 +9,17 @@
     <% if category.child? %>
       <%= raw "|" + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"*category.depth + "|--" %>
     <% end %>
-    <%= category.name %>
+    <%= link_to category.name, admin_category_products_path(category) %>
   </td>
   <td class="text-left"><%= category.description %></td>
   <td class="text-left"><%= category.products_size %></td>
   <td class="text-left"><%= l category.created_at, format: :date_format %></td>
   <td class="text-left">
+    <%= link_to new_admin_product_path(category_id: category.id),
+      class: "btn btn-success btn-xs", remote: true do %>
+      <span class="glyphicon glyphicon-plus"></span>
+      <%= t ".add_product" %>
+    <% end %>
     <%= link_to edit_admin_category_path(category),
       class: "btn btn-info btn-xs", remote: true,
       id: category.id do %>

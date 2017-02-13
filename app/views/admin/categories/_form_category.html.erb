@@ -4,7 +4,7 @@
       <%= form_for [:admin, @category], remote: true do |f| %>
         <div class="modal-body">
           <div>
-            <label><%= t ".category" %></label>
+            <label><%= t ".parent_category" %></label>
             <%= f.select :parent_id,
               nested_set_options(Category, @category) {|cat| "#{'-' * cat.level} #{cat.name}"},
               {include_blank: t(".none")},
