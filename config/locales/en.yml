@@ -226,6 +226,12 @@ en:
         processing: "Processing"
         approved: "Approved"
         canceled: "Canceled"
+    order:
+      statuses:
+        in_progress: "In progress"
+        shipping: "Shipping"
+        delivered: "Delivered"
+        cancel: "Cancel"
   products:
     index:
       title: "All product"
@@ -264,3 +270,22 @@ en:
       check_out: "Check out"
       next: "Next"
       buy_more: "Buy more"
+  orders:
+    create:
+      orders_create_success: "The order is success. Please comfim yout order detail by email."
+      order_create_fail: "The order is failed. Please make order again. Or contact to administrator"
+    update:
+      order_update_success: "The order is canceled!"
+      order_update_fail: "Cancel order is failed. Please contact with us by email."
+    index:
+      title: "History Orders"
+      code: "Code"
+      action: "Action"
+      status: "Status"
+      total_bill: "Total bill"
+      phone: "Phone"
+      ship_address: "Ship Address"
+      created_at: "Created at"
+    order:
+      cancel: "Cancel"
+      sure_delete: "Are you sure?"

@@ -1,0 +1,2 @@
+$('#list').html('<%= escape_javascript render @orders %>');
+$('#paging').html('<%= escape_javascript paginate(@orders, remote: true).to_s %>');
