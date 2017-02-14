@@ -9,8 +9,9 @@
     <div class="card-block">
       <div class="card-content">
         <p class="card-title">
-          <%= product.name %> | <%= number_to_currency product.price %> |
-            <%= product.in_stock %> <%= t "admin.products.index.in_stock" %>
+          <span class="text-danger"><%= product.name %></span> |
+          <span class="text-primary"><%= number_to_currency product.price %></span>
+          | <%= product.in_stock %> <%= t "admin.products.index.in_stock" %>
         </p>
       </div>
       <div class="card-footer text-muted">
