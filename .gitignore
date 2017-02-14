@@ -34,7 +34,7 @@ bower.json
 .powenv
 
 # Ignore database configure file
-config/database.yml
+#config/database.yml
 test/
 .idea/
 public/uploads/
