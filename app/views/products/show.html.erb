@@ -29,7 +29,7 @@
     </div>
     <div>
       <% if current_user %>
-        <%= rating_for @product, "quality", enable_half: true %>
+        <%= rating_for @product, "quality", enable_half: true, star_path: "/images/ratyrate" %>
       <% end %>
     </div>
   </div>
