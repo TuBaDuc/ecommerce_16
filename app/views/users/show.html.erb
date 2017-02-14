@@ -4,9 +4,8 @@
   <div class="row">
     <div class="col-md-offset-1 col-md-3">
       <div class="user_photo">
-        <% if @user.photo.nil? %>
-          <%= image_tag @user.photo.url, size: Settings.user.photo_size_large  %>
-        <% end %>
+        <%= image_tag @user.photo? ? @user.photo.url : "default-avatar.png",
+          size: Settings.user.photo_size_large %>
       </div>
     </div>
     <div class="col-md-7">

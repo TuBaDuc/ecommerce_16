@@ -63,7 +63,7 @@ en:
   #users
   users:
     show:
-      header: "Profile"
+      title: "Profile"
       edit_profile: "Edit profile"
       name: "Name"
       email: "E-mail"
