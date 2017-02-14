@@ -5,6 +5,6 @@ class CategoriesController < ApplicationController
     @search = @category.products.ransack params[:q]
     @q = @category.products.search params[:q]
     @products = @q.result(distinct: true).page(params[:page])
-      .per Settings.admin.user.page_items_limit.level2
+      .per Settings.show_limit.show_8
   end
 end

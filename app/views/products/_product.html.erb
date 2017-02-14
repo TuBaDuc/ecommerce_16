@@ -3,7 +3,8 @@
   <div class="card" id="<%= product.name %>">
     <div class="card-photo">
       <%= image_tag product.photo.present? ? product.photo : "default.jpg",
-        class: "card-img-top", data: {caption: product.description} %>
+        class: "card-img-top", size: Settings.product.photo_size,
+        data: {caption: product.description} %>
     </div>
     <div class="card-block">
       <div class="card-content">

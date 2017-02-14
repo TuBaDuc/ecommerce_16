@@ -29,3 +29,5 @@ cart:
   item_photo_size: 30
 order_prefix: "ODR"
 order_time_format: "%Y%m%d%H%M%S"
+product:
+  photo_size: 250

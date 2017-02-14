@@ -2,7 +2,7 @@
 <div class="row">
   <h2><%= t ".all_products_of" %> <%= @category.name %></h2>
 </div>
-<%= search_form_for @q, url: products_path, class: "form-inline" do |f| %>
+<%= search_form_for @q, url: category_path, class: "form-inline" do |f| %>
   <div class="row">
     <div class="col-md-3">
       <%= f.label :name_cont, t(".products_name") %>
